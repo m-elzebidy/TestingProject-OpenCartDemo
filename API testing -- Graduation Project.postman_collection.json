@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "8f220920-b86a-4c53-8f3b-0aa107d73876",
+		"name": "API testing || Graduation Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48994389",
+		"_collection_link": "https://www.postman.com/mohamedelzebidy-2440382/workspace/graduation-project-group-d/collection/48994389-8f220920-b86a-4c53-8f3b-0aa107d73876?action=share&source=collection_link&creator=48994389"
+	},
+	"item": [
+		{
+			"name": "https://automationexercise.com/api/productsList",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/productsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/productsList",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/productsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"productsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/brandsList",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/brandsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/brandsList",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/brandsList",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"brandsList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/searchProduct",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "search_product",
+							"value": "top",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/searchProduct",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/searchProduct",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/searchProduct",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"searchProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/verifyLogin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "newtester22699@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "NewTester_1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/verifyLogin?password=NewTester_1234",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin?password=NewTester_1234",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					],
+					"query": [
+						{
+							"key": "password",
+							"value": "NewTester_1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/createAccount?name=mohamed&email=mohamed.a.elzebidy@gmail.com&password=Mohamed_Elzebi",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/createAccount?name=mohamed&email=mohamed.a.elzebidy@gmail.com&password=Mohamed_Elzebidy123456&title=Mr&birth_date=11&birth_month=11&birth_year=1992&firstname=mohamed&lastname=elzebidy&company=untitled&address1=address1&address2=address2&country=us&zipcode=07008&state=newyork&city=newyork&mobile_number=2125556666",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"createAccount"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mohamed"
+						},
+						{
+							"key": "email",
+							"value": "mohamed.a.elzebidy@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "Mohamed_Elzebidy123456"
+						},
+						{
+							"key": "title",
+							"value": "Mr"
+						},
+						{
+							"key": "birth_date",
+							"value": "11"
+						},
+						{
+							"key": "birth_month",
+							"value": "11"
+						},
+						{
+							"key": "birth_year",
+							"value": "1992"
+						},
+						{
+							"key": "firstname",
+							"value": "mohamed"
+						},
+						{
+							"key": "lastname",
+							"value": "elzebidy"
+						},
+						{
+							"key": "company",
+							"value": "untitled"
+						},
+						{
+							"key": "address1",
+							"value": "address1"
+						},
+						{
+							"key": "address2",
+							"value": "address2"
+						},
+						{
+							"key": "country",
+							"value": "us"
+						},
+						{
+							"key": "zipcode",
+							"value": "07008"
+						},
+						{
+							"key": "state",
+							"value": "newyork"
+						},
+						{
+							"key": "city",
+							"value": "newyork"
+						},
+						{
+							"key": "mobile_number",
+							"value": "2125556666"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/verifyLogin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/verifyLogin?email=newtester22600@gmail.com&password=NewTester_12345678",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/verifyLogin?email=newtester22600@gmail.com&password=NewTester_12345678",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"verifyLogin"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "newtester22600@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "NewTester_12345678"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/deleteAccount?email=newtester22699@gmail.com&password=NewTester_1234",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/deleteAccount?email=newtester22699@gmail.com&password=NewTester_1234",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"deleteAccount"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "newtester22699@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "NewTester_1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/updateAccount?name=mohamed&email=newtester22699@gmail.com&password=NewTester_1234&tit",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/updateAccount?name=mohamed&email=newtester22699@gmail.com&password=NewTester_1234&title=Mr&birth_date=11&birth_month=11&birth_year=1995&firstname=mohamed&lastname=mohamed&company=untitled&address1=address1&address2=address2&country=united states&zipcode=07008&state=newyork&city=newyork&mobile_number=2125555666",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"updateAccount"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mohamed"
+						},
+						{
+							"key": "email",
+							"value": "newtester22699@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "NewTester_1234"
+						},
+						{
+							"key": "title",
+							"value": "Mr"
+						},
+						{
+							"key": "birth_date",
+							"value": "11"
+						},
+						{
+							"key": "birth_month",
+							"value": "11"
+						},
+						{
+							"key": "birth_year",
+							"value": "1995"
+						},
+						{
+							"key": "firstname",
+							"value": "mohamed"
+						},
+						{
+							"key": "lastname",
+							"value": "mohamed"
+						},
+						{
+							"key": "company",
+							"value": "untitled"
+						},
+						{
+							"key": "address1",
+							"value": "address1"
+						},
+						{
+							"key": "address2",
+							"value": "address2"
+						},
+						{
+							"key": "country",
+							"value": "united states"
+						},
+						{
+							"key": "zipcode",
+							"value": "07008"
+						},
+						{
+							"key": "state",
+							"value": "newyork"
+						},
+						{
+							"key": "city",
+							"value": "newyork"
+						},
+						{
+							"key": "mobile_number",
+							"value": "2125555666"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://automationexercise.com/api/getUserDetailByEmail?email=newtester22699@gmail.com",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://automationexercise.com/api/getUserDetailByEmail?email=newtester22699@gmail.com",
+					"protocol": "https",
+					"host": [
+						"automationexercise",
+						"com"
+					],
+					"path": [
+						"api",
+						"getUserDetailByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "newtester22699@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
