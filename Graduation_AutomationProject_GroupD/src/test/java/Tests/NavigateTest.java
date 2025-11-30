@@ -17,6 +17,7 @@ public class NavigateTest extends TestBase
     CamerasPage camerasPage;
     Mp3PlayersPage mp3PlayersPage;
     PcSubcategoryPage pcSubcategoryPage;
+    MonitorsPage monitorsPage;
 
     @Test
     public void validateSuccessfulHomePageNavigation()
@@ -152,7 +153,18 @@ public class NavigateTest extends TestBase
         homePage.clickPcAfterHoverDesktopCategory();
 
         pcSubcategoryPage.assertPcPageTitleIsDisplayed();
+    }
 
+    @Test
+    public void clickMonitorsAfterHoverComponentsCategory()
+    {
+        homePage = new HomePage(driver);
+        monitorsPage = new MonitorsPage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickMonitorsAfterHoverComponentsCategory();
+
+        monitorsPage.assertMonitorsPageTitleIsDisplayed();
     }
 
     @Test

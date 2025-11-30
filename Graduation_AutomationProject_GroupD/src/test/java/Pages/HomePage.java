@@ -35,6 +35,7 @@ public class HomePage
     By mp3PlayersCategoryButton = By.xpath("//a[text()='MP3 Players']");
 
     By pcHoverLinkBtn = By.xpath("//a[contains(@class,'dropdown-item') and contains(text(),'PC')]");
+    By monitorsHoverLinkBtn = By.xpath("//a[@class='dropdown-item' and normalize-space()='Monitors (2)']");
     By showAllDesktopsButton = By.xpath("//a[normalize-space(text())='Show All Desktops']");
     By showAllLaptopsButton = By.xpath("//a[normalize-space(text())='Show All Laptops & Notebooks']");
     By showAllTabletsButton = By.xpath("//a[normalize-space(text())='Show All Tablets']");
@@ -118,6 +119,13 @@ public class HomePage
         actions.moveToElement(driver.findElement(desktopCategoryButton)).perform();
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(pcHoverLinkBtn)));
         driver.findElement(pcHoverLinkBtn).click();
+    }
+
+    public void clickMonitorsAfterHoverComponentsCategory()
+    {
+        actions.moveToElement(driver.findElement(componentsCategoryButton)).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(monitorsHoverLinkBtn)));
+        driver.findElement(monitorsHoverLinkBtn).click();
     }
 
 

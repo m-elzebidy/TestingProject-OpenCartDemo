@@ -25,3 +25,7 @@ public class TestBase
         driver.quit();
     }
 }
+
+//JavascriptExecutor js = (JavascriptExecutor) driver;
+//String msg = (String) js.executeScript("return arguments[0].validationMessage;", driver.findElement(email_textBox));
+//Assert.assertEquals(msg , "E-Mail Address does not appear to be valid!");
