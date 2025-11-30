@@ -2,32 +2,37 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-    public class CartPage extends BasePage{
+public class CartPage {
 
-        public CartPage(WebDriver driver){
-            super(driver);
-        }
-
-        public boolean isProductInCart(String name){
-            By selector = By.xpath("//table//a[text()='"+name+"']");
-            return isDisplayed(selector);
-        }
-
-        public void removeProduct(String name){
-            By selector = By.xpath("//a[text()='"+name+"']/ancestor::tr//button[@data-original-title='Remove']");
-            click(selector);
-        }
-
-        public boolean isCartEmpty(){
-            By emptyMsg = By.xpath("//p[contains(text(),'Your shopping cart is empty')]");
-            return isDisplayed(emptyMsg);
-        }
+    WebDriver driver;
+    public CartPage(WebDriver driver) {
+        this.driver = driver;
     }
 
+//    Locators
+
+    By removeButton = By.cssSelector("button[data-original-title='Remove']");
+    By successAlert = By.cssSelector(".alert-success");
+
+
+//  Actions
+    public void openCartPage() {
+        driver.get("https://demo.opencart-extensions.co.uk/index.php?route=checkout/cart");
+    }
+
+    public void removeItem() {
+        driver.findElement(removeButton).click();
+    }
+
+    public String getSuccessMessage() {
+        return driver.findElement(successAlert).getText();
+    }
+
+//    Assertions
+
+
+}
 
 
 
