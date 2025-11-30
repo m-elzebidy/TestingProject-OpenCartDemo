@@ -12,6 +12,10 @@ public class NavigateTest extends TestBase
     TabletsPage tabletsPage;
     LaptopsPage laptopsPage;
     ComponentsPage componentsPage;
+    SoftwarePage softwarePage;
+    PhonesPage phonesPage;
+    CamerasPage camerasPage;
+    Mp3PlayersPage mp3PlayersPage;
 
     @Test
     public void validateSuccessfulHomePageNavigation()
@@ -66,16 +70,49 @@ public class NavigateTest extends TestBase
         tabletsPage.assertTabletsPageTitleIsdisplayed();
     }
 
-//    @Test
-//    public void validateSubcategoryDesktopsShownWhenHoverOver()
-//    {
-//        homePage = new HomePage(driver);
-//
-//        homePage.navigateHomePage();
-//        homePage.hoverOverDesktopsCategory();
-//        homePage.assertSubcategoryDesktopsShown();
-//
-//    }
+    @Test
+    public void validateSuccessfulSoftwareCategoryNavigation()
+    {
+        homePage = new HomePage(driver);
+        softwarePage = new SoftwarePage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickSoftwareCategoryButton();
+        softwarePage.assertSoftwarePageTitleIsdisplayed();
+    }
+
+    @Test
+    public void validateSuccessfulPhonesAndPdasCategoryNavigation()
+    {
+        homePage = new HomePage(driver);
+        phonesPage = new PhonesPage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickPhonesCategoryButton();
+        phonesPage.assertPhonesPageTitleIsdisplayed();
+    }
+
+    @Test
+    public void validateSuccessfulCamerasCategoryNavigation()
+    {
+        homePage = new HomePage(driver);
+        camerasPage = new CamerasPage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickCamerasCategoryButton();
+        camerasPage.assertCamerasPageTitleIsdisplayed();
+    }
+
+    @Test
+    public void validateSuccessfulMp3PlayersCategoryNavigation()
+    {
+        homePage = new HomePage(driver);
+        mp3PlayersPage = new Mp3PlayersPage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickMp3PlayersCategoryButton();
+        mp3PlayersPage.assertMp3PlayersPageTitleIsdisplayed();
+    }
 
     @Test
     public void validateDesktopsNavigationFromSubcategory()

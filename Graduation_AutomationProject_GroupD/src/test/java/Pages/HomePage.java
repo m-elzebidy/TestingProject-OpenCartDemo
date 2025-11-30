@@ -23,6 +23,10 @@ public class HomePage
     By laptopsCategoryButton = By.xpath("//a[text()='Laptops & Notebooks']");
     By componentsCategoryButton = By.xpath("//a[text()='Components']");
     By tabletsCategoryButton = By.xpath("//a[normalize-space(text())='Tablets']");
+    By softwareCategoryButton = By.xpath("//a[text()='Software']");
+    By phonesCategoryButton = By.xpath("//a[text()='Phones & PDAs']");
+    By camerasCategoryButton = By.xpath("//a[text()='Cameras']");
+    By mp3PlayersCategoryButton = By.xpath("//a[text()='MP3 Players']");
 
     By showAllDesktopsButton = By.xpath("//a[normalize-space(text())='Show All Desktops']");
     By myAccount_list = By.className("dropdown");
@@ -56,6 +60,26 @@ public class HomePage
     public void clickTabletsCategoryButton()
     {
         driver.findElement(tabletsCategoryButton).click();
+    }
+
+    public void clickSoftwareCategoryButton()
+    {
+        driver.findElement(softwareCategoryButton).click();
+    }
+
+    public void clickPhonesCategoryButton()
+    {
+        driver.findElement(phonesCategoryButton).click();
+    }
+
+    public void clickCamerasCategoryButton()
+    {
+        driver.findElement(camerasCategoryButton).click();
+    }
+
+    public void clickMp3PlayersCategoryButton()
+    {
+        driver.findElement(mp3PlayersCategoryButton).click();
     }
 
     public void hoverOverDesktopsCategory()
