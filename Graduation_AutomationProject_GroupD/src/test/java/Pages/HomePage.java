@@ -3,17 +3,23 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 
 public class HomePage
 {
     WebDriver driver;
     Actions actions;
+    WebDriverWait wait;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
 
@@ -28,7 +34,11 @@ public class HomePage
     By camerasCategoryButton = By.xpath("//a[text()='Cameras']");
     By mp3PlayersCategoryButton = By.xpath("//a[text()='MP3 Players']");
 
+    By pcHoverLinkBtn = By.xpath("//a[contains(@class,'dropdown-item') and contains(text(),'PC')]");
     By showAllDesktopsButton = By.xpath("//a[normalize-space(text())='Show All Desktops']");
+    By showAllLaptopsButton = By.xpath("//a[normalize-space(text())='Show All Laptops & Notebooks']");
+    By showAllTabletsButton = By.xpath("//a[normalize-space(text())='Show All Tablets']");
+
     By myAccount_list = By.className("dropdown");
     By register_item = By.xpath("//*[@id=\"top\"]/div/div/div[2]/ul/li[2]/div/ul/li[1]/a]");
 
@@ -82,10 +92,32 @@ public class HomePage
         driver.findElement(mp3PlayersCategoryButton).click();
     }
 
-    public void hoverOverDesktopsCategory()
+    public void validateHoverOverDesktopsCategory()
     {
         actions.moveToElement(driver.findElement(desktopCategoryButton)).perform();
-        driver.findElement(showAllDesktopsButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(showAllDesktopsButton)));
+        Assert.assertTrue(driver.findElement(showAllDesktopsButton).isDisplayed());
+    }
+
+    public void validateHoverOverLaptopsCategory()
+    {
+        actions.moveToElement(driver.findElement(laptopsCategoryButton)).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(showAllLaptopsButton)));
+        Assert.assertTrue(driver.findElement(showAllLaptopsButton).isDisplayed());
+    }
+
+    public void validateHoverOverTabletsCategory()
+    {
+        actions.moveToElement(driver.findElement(tabletsCategoryButton)).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(showAllTabletsButton)));
+        Assert.assertTrue(driver.findElement(showAllTabletsButton).isDisplayed());
+    }
+
+    public void clickPcAfterHoverDesktopCategory()
+    {
+        actions.moveToElement(driver.findElement(desktopCategoryButton)).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(pcHoverLinkBtn)));
+        driver.findElement(pcHoverLinkBtn).click();
     }
 
 
@@ -114,7 +146,6 @@ public class HomePage
     public void assertSubcategoryDesktopsShown()
     {
         Assert.assertTrue(driver.findElement(showAllDesktopsButton).isDisplayed());
-        driver.findElement(showAllDesktopsButton).click();
     }
     public void assertSuccessfulNavigation()
     {

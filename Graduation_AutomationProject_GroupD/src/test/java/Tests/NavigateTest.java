@@ -16,6 +16,7 @@ public class NavigateTest extends TestBase
     PhonesPage phonesPage;
     CamerasPage camerasPage;
     Mp3PlayersPage mp3PlayersPage;
+    PcSubcategoryPage pcSubcategoryPage;
 
     @Test
     public void validateSuccessfulHomePageNavigation()
@@ -115,6 +116,46 @@ public class NavigateTest extends TestBase
     }
 
     @Test
+    public void validateHoverOverDesktopCategory()
+    {
+        homePage = new HomePage(driver);
+
+        homePage.navigateHomePage();
+        homePage.validateHoverOverDesktopsCategory();
+    }
+
+    @Test
+    public void validateHoverOverLaptopsCategory()
+    {
+        homePage = new HomePage(driver);
+
+        homePage.navigateHomePage();
+        homePage.validateHoverOverLaptopsCategory();
+    }
+
+    @Test
+    public void validateHoverOverTabletsCategory()
+    {
+        homePage = new HomePage(driver);
+
+        homePage.navigateHomePage();
+        homePage.validateHoverOverTabletsCategory();
+    }
+
+    @Test
+    public void clickPcAfterHoverDesktopCategory()
+    {
+        homePage = new HomePage(driver);
+        pcSubcategoryPage = new PcSubcategoryPage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickPcAfterHoverDesktopCategory();
+
+        pcSubcategoryPage.assertPcPageTitleIsDisplayed();
+
+    }
+
+    @Test
     public void validateDesktopsNavigationFromSubcategory()
     {
         tabletsPage = new TabletsPage(driver);
@@ -126,12 +167,5 @@ public class NavigateTest extends TestBase
         desktopsPage.assertReleventProductsShown();
     }
 
-    @Test
-    public void hoverOver()
-    {
-        homePage = new HomePage(driver);
 
-        homePage.navigateHomePage();
-        homePage.hoverOverDesktopsCategory();
-    }
 }
