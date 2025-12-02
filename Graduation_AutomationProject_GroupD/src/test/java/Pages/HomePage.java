@@ -46,12 +46,44 @@ public class HomePage
     By iPhone = By.linkText("iPhone");
     By showAllLaptops = By.linkText("Show All Laptops & Notebooks");
     By macbook = By.linkText("MacBook");
+    By laptopsMenu = By.linkText("Laptops & Notebooks");
+
+
+    // Example products
+    By macbookProduct = By.linkText("MacBook");
+    By hpLaptopProduct = By.linkText("HP LP3065");
+    By sonyLaptopProduct = By.linkText("Sony VAIO");
+
+    // Add to cart buttons
+    By macAddToCartBtn = By.xpath("//a[text()='MacBook']/../following-sibling::div//button[contains(@onclick,'cart')]");
+    By hpAddToCartBtn = By.xpath("//a[text()='HP LP3065']/../following-sibling::div//button[contains(@onclick,'cart')]");
+    By sonyAddToCartBtn = By.xpath("//a[text()='Sony VAIO']/../following-sibling::div//button[contains(@onclick,'cart')]");
+
+    // Success messages
+    By successAlert = By.cssSelector("div.alert.alert-success");
+
+    // Wishlist icon
+    By macWishlistBtn = By.xpath("//a[text()='MacBook']/../following-sibling::div//button[contains(@onclick,'wishlist')]");
+    By sonyWishlistBtn = By.xpath("//a[text()='Sony VAIO']/../following-sibling::div//button[contains(@onclick,'wishlist')]");
+
+    By myAccount_dropdown = By.xpath("//span[text()='My Account']");
+    By login_link = By.linkText("Login");
+    By logout_link = By.linkText("Logout");
+    By cart_btn = By.id("cart-total");
+    By product_search = By.name("search");
+    By search_btn = By.xpath("//button[@type='submit' and @class='btn btn-light btn-lg']");
 
     //Actions
     public void navigateHomePage()
     {
         driver.get("http://localhost/opencartproject/");
     }
+
+    public void navigate()
+    {
+        driver.get("http://localhost/opencartProject/");
+    }
+
 
     public void clickDesktopsCategoryButton()
     {
@@ -128,13 +160,12 @@ public class HomePage
         driver.findElement(monitorsHoverLinkBtn).click();
     }
 
-
     public void openIphonePage() {
         driver.findElement(iPhone).click();
     }
 
     public void openLaptopsPage() {
-        driver.findElement(laptopsCategoryButton).click();
+        driver.findElement(laptopsMenu).click();
         driver.findElement(showAllLaptops).click();
     }
 
@@ -149,6 +180,24 @@ public class HomePage
     }
 
 
+    public String getSuccessMessage() {
+        return driver.findElement(successAlert).getText();
+    }
+
+    public void navigateToLoginPage() {
+        driver.findElement(myAccount_dropdown).click();
+        driver.findElement(login_link).click();
+    }
+
+    public void logout() {
+        driver.findElement(myAccount_dropdown).click();
+        driver.findElement(logout_link).click();
+    }
+
+    public void searchProduct(String productName) {
+        driver.findElement(product_search).sendKeys(productName);
+        driver.findElement(search_btn).click();
+    }
 
     //Assertions
     public void assertSubcategoryDesktopsShown()
@@ -159,6 +208,10 @@ public class HomePage
     {
         Assert.assertEquals(driver.getCurrentUrl() , "http://localhost/opencartproject/");
         Assert.assertTrue(driver.findElement(carousel).isDisplayed());
+    }
+
+    public void assertNavigationToHomePage() {
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost/opencart/");
     }
 
 

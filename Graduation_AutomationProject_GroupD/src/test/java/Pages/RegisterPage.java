@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -62,7 +63,7 @@ public class RegisterPage {
     }
 
 
-    public void scrollDownAndClick2()
+    public void scrollDownToPrivacypolicy()
     {
         WebElement element1 = driver.findElement(agree_checkBox);
 
@@ -70,7 +71,11 @@ public class RegisterPage {
         actions.moveToElement(element1).perform();
 
 
-        element1.click();
+//        element1.click();
+    }
+    public void ClickPrivacyPolicy()
+    {
+        driver.findElement(agree_checkBox).click();
     }
 
 
@@ -80,9 +85,13 @@ public class RegisterPage {
     }
 
      //Assertions
-    public void assertSuccessfulContinue()
+    public void assertNewletterIsSelected()
     {
         Assert.assertTrue(driver.findElement(newsletter_checkBox).isSelected());
+
+    }
+    public void assertPrivacyPolicyIsSelected()
+    {
         Assert.assertTrue(driver.findElement(agree_checkBox).isSelected());
     }
 
@@ -103,22 +112,43 @@ public class RegisterPage {
     public void assertEmailErrorMsg()
     {
         Assert.assertTrue(driver.findElement(email_error_msg).isDisplayed());
-        Assert.assertTrue(driver.findElement(email_error_msg).getText().contains("E-Mail Address does not appear to be valid!"));
+        Assert.assertEquals(driver.findElement(email_error_msg).getText(),"E-Mail Address does not appear to be valid!");
+    }
+    public void assertinvalidFmailErrorMsg()
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String msg = (String) js.executeScript("return arguments[0].validationMessage;", driver.findElement(email_textBox));
+        Assert.assertEquals(msg , "Please include an '@' in the email address. 'maiamr' is missing an '@'.");
     }
     public void assertRegisteredEmailErrorMsg()
     {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertTrue(driver.findElement(registered_email_error_msg).isDisplayed());
-        Assert.assertTrue(driver.findElement(registered_email_error_msg).getText().contains("Warning: E-Mail Address is already registered!"));
+        Assert.assertEquals(driver.findElement(registered_email_error_msg).getText(),"Warning: E-Mail Address is already registered!");
     }
     public void assertPasswordErrorMsg()
     {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertTrue(driver.findElement(password_error_msg).isDisplayed());
-        Assert.assertTrue(driver.findElement(password_error_msg).getText().contains("Password must be between 6 and 40 characters!"));
+        Assert.assertEquals(driver.findElement(password_error_msg).getText(),"Password must be between 6 and 40 characters!");
     }
     public void assertAgreementErrorMsg()
     {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertTrue(driver.findElement(agreement_error_msg).isDisplayed());
-        Assert.assertTrue(driver.findElement(agreement_error_msg).getText().contains("Warning: You must agree to the Privacy Policy!"));
+        Assert.assertEquals(driver.findElement(agreement_error_msg).getText(),"Warning: You must agree to the Privacy Policy!");
 
     }
 

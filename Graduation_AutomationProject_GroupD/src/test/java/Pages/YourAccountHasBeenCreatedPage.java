@@ -2,7 +2,11 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 public class YourAccountHasBeenCreatedPage {
     WebDriver driver;
@@ -24,6 +28,8 @@ public class YourAccountHasBeenCreatedPage {
     //Assertions
     public void assertSuccessfulRegister()
     {
+        WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.textToBe(success_msg , "Your Account Has Been Created!"));
         Assert.assertTrue(driver.findElement(success_msg).isDisplayed());
         Assert.assertEquals(driver.findElement(success_msg).getText(),"Your Account Has Been Created!");
         Assert.assertTrue(driver.findElement(continue2_btn).isDisplayed());

@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+public class WishListTests {
     public class WishlistTests extends BaseTests {
 
         @Test
@@ -48,4 +49,4 @@ import org.testng.annotations.Test;
                     "Invalid token warning NOT displayed!");
         }
     }
-
+}
