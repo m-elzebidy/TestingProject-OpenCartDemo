@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -27,7 +28,13 @@ public class DesktopsPage {
     //Assertions
     public void assertDesktopsPageTitleIsdisplayed()
     {
-        Assert.assertTrue(driver.findElement(desktopPageTitle).isDisplayed());
+        try {
+            WebElement title = driver.findElement(desktopPageTitle);
+            Assert.assertTrue(title.isDisplayed(),
+                    "Error: User failed to navigate to Desktops Category page after clicking Desktops btn");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Error: User failed to navigate to Desktops Category page after clicking Desktops btn");
+        }
     }
     public void assertReleventProductsShown()
     {
@@ -46,7 +53,7 @@ public class DesktopsPage {
         numberOnly = text.replaceAll("[^0-9]", "");
         int macCount = Integer.parseInt(numberOnly);
 
-        Assert.assertEquals(desktopsCount,pcCount+macCount);
+        Assert.assertEquals(desktopsCount,pcCount+macCount , "Irrelevant products shown after navigating to desktops category page");
 
 
     }

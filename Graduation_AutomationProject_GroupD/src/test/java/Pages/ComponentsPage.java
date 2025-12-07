@@ -1,7 +1,9 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class ComponentsPage
@@ -20,7 +22,14 @@ public class ComponentsPage
 //    Assertions
     public void assertComponentsPageTitleIsDisplayed()
     {
-        Assert.assertTrue(driver.findElement(componentsPageTitle).isDisplayed());
+        try {
+            WebElement title = driver.findElement(componentsPageTitle);
+            Assert.assertTrue(title.isDisplayed(),
+                    "Error: User failed to navigate to Components Category page after clicking Components btn");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Error: User failed to navigate to Components Category page after clicking Components btn");
+        }
+
     }
 
 }

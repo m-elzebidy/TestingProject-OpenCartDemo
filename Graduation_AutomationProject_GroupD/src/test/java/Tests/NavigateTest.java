@@ -2,6 +2,7 @@ package Tests;
 
 import Pages.*;
 import org.testng.annotations.Test;
+import io.qameta.allure.*;
 
 
 public class NavigateTest extends TestBase
@@ -18,6 +19,7 @@ public class NavigateTest extends TestBase
     Mp3PlayersPage mp3PlayersPage;
     PcSubcategoryPage pcSubcategoryPage;
     MonitorsPage monitorsPage;
+    SamsungGalaxyTabProductPage samsungGalaxyTabProductPage;
 
     @Test
     public void validateSuccessfulHomePageNavigation()
@@ -177,6 +179,18 @@ public class NavigateTest extends TestBase
         tabletsPage.clickDesktopsButtonInSubMenu();
         desktopsPage.assertDesktopsPageTitleIsdisplayed();
         desktopsPage.assertReleventProductsShown();
+    }
+
+    @Test
+    public void validateFirstProductCarouselNavigation()
+    {
+        homePage = new HomePage(driver);
+        samsungGalaxyTabProductPage = new SamsungGalaxyTabProductPage(driver);
+
+        homePage.navigateHomePage();
+        homePage.clickFirstCarouselProduct();
+
+        samsungGalaxyTabProductPage.assertProductTitleContainsIphone();
     }
 
 

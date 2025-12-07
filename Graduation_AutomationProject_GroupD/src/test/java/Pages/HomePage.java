@@ -1,7 +1,6 @@
 package Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,43 +32,16 @@ public class HomePage
     By phonesCategoryButton = By.xpath("//a[text()='Phones & PDAs']");
     By camerasCategoryButton = By.xpath("//a[text()='Cameras']");
     By mp3PlayersCategoryButton = By.xpath("//a[text()='MP3 Players']");
-
+    By firstCarouselProductImage = By.xpath("//img[@alt='iPhone 6']");
     By pcHoverLinkBtn = By.xpath("//a[contains(@class,'dropdown-item') and contains(text(),'PC')]");
     By monitorsHoverLinkBtn = By.xpath("//a[@class='dropdown-item' and normalize-space()='Monitors (2)']");
     By showAllDesktopsButton = By.xpath("//a[normalize-space(text())='Show All Desktops']");
     By showAllLaptopsButton = By.xpath("//a[normalize-space(text())='Show All Laptops & Notebooks']");
     By showAllTabletsButton = By.xpath("//a[normalize-space(text())='Show All Tablets']");
-
-    By myAccount_list = By.className("dropdown");
-    By register_item = By.xpath("//*[@id=\"top\"]/div/div/div[2]/ul/li[2]/div/ul/li[1]/a]");
-
     By iPhone = By.linkText("iPhone");
-    By showAllLaptops = By.linkText("Show All Laptops & Notebooks");
-    By macbook = By.linkText("MacBook");
-    By laptopsMenu = By.linkText("Laptops & Notebooks");
-
-
-    // Example products
-    By macbookProduct = By.linkText("MacBook");
-    By hpLaptopProduct = By.linkText("HP LP3065");
-    By sonyLaptopProduct = By.linkText("Sony VAIO");
-
-    // Add to cart buttons
-    By macAddToCartBtn = By.xpath("//a[text()='MacBook']/../following-sibling::div//button[contains(@onclick,'cart')]");
-    By hpAddToCartBtn = By.xpath("//a[text()='HP LP3065']/../following-sibling::div//button[contains(@onclick,'cart')]");
-    By sonyAddToCartBtn = By.xpath("//a[text()='Sony VAIO']/../following-sibling::div//button[contains(@onclick,'cart')]");
-
-    // Success messages
-    By successAlert = By.cssSelector("div.alert.alert-success");
-
-    // Wishlist icon
-    By macWishlistBtn = By.xpath("//a[text()='MacBook']/../following-sibling::div//button[contains(@onclick,'wishlist')]");
-    By sonyWishlistBtn = By.xpath("//a[text()='Sony VAIO']/../following-sibling::div//button[contains(@onclick,'wishlist')]");
-
     By myAccount_dropdown = By.xpath("//span[text()='My Account']");
     By login_link = By.linkText("Login");
     By logout_link = By.linkText("Logout");
-    By cart_btn = By.id("cart-total");
     By product_search = By.name("search");
     By search_btn = By.xpath("//button[@type='submit' and @class='btn btn-light btn-lg']");
 
@@ -139,12 +111,17 @@ public class HomePage
         Assert.assertTrue(driver.findElement(showAllLaptopsButton).isDisplayed());
     }
 
-    public void validateHoverOverTabletsCategory()
-    {
+    public void validateHoverOverTabletsCategory() {
         actions.moveToElement(driver.findElement(tabletsCategoryButton)).perform();
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(showAllTabletsButton)));
-        Assert.assertTrue(driver.findElement(showAllTabletsButton).isDisplayed());
+
+        try {
+            WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(showAllTabletsButton));
+            Assert.assertTrue(button.isDisplayed(), "Error: No action happened after hovering over Tablets category btn");
+        } catch (TimeoutException | NoSuchElementException e) {
+            Assert.fail("Error: No action happened after hovering over Tablets category btn");
+        }
     }
+
 
     public void clickPcAfterHoverDesktopCategory()
     {
@@ -160,28 +137,19 @@ public class HomePage
         driver.findElement(monitorsHoverLinkBtn).click();
     }
 
+    public void clickFirstCarouselProduct()
+    {
+        driver.findElement(firstCarouselProductImage).click();
+    }
+
     public void openIphonePage() {
         driver.findElement(iPhone).click();
-    }
-
-    public void openLaptopsPage() {
-        driver.findElement(laptopsMenu).click();
-        driver.findElement(showAllLaptops).click();
-    }
-
-    public void openMacbookPage() {
-        driver.findElement(macbook).click();
     }
 
     public void openLaptops() {
     }
 
     public void openProduct(String iPhone) {
-    }
-
-
-    public String getSuccessMessage() {
-        return driver.findElement(successAlert).getText();
     }
 
     public void navigateToLoginPage() {
@@ -200,19 +168,9 @@ public class HomePage
     }
 
     //Assertions
-    public void assertSubcategoryDesktopsShown()
-    {
-        Assert.assertTrue(driver.findElement(showAllDesktopsButton).isDisplayed());
-    }
     public void assertSuccessfulNavigation()
     {
         Assert.assertEquals(driver.getCurrentUrl() , "http://localhost/opencartproject/");
         Assert.assertTrue(driver.findElement(carousel).isDisplayed());
     }
-
-    public void assertNavigationToHomePage() {
-        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost/opencart/");
-    }
-
-
 }

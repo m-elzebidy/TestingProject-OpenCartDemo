@@ -1,33 +1,42 @@
 package Tests;
 
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
-public class TestBase
-{
-    WebDriver driver;
-
+public class TestBase {
+    protected WebDriver driver;
     @BeforeMethod
-    public void precondition()
-    {
+    public void precondition() {
         driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("http://localhost/opencart/");
     }
-
     @AfterMethod
-    public void teardown()
-    {
-        driver.quit();
+    public void teardown(ITestResult result) {
+        // Attach screenshot if test failed
+        if (result.getStatus() == ITestResult.FAILURE) {
+            attachScreenshot(result.getName());
+        }
+
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+    public void attachScreenshot(String name) {
+        try {
+            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            Allure.addAttachment(name, new ByteArrayInputStream(screenshot));
+        } catch (Exception e) {
+            System.out.println("Failed to capture screenshot: " + e.getMessage());
+        }
     }
 }
-
-//JavascriptExecutor js = (JavascriptExecutor) driver;
-//String msg = (String) js.executeScript("return arguments[0].validationMessage;", driver.findElement(email_textBox));
-//Assert.assertEquals(msg , "E-Mail Address does not appear to be valid!");

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Navigate Feature Suite">
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+    <test name="Navigate Feature Tests">
+        <classes>
+            <class name="Tests.NavigateTest"/>
+        </classes>
+    </test>
+</suite>

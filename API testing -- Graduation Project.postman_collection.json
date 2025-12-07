@@ -8,7 +8,23 @@
 	},
 	"item": [
 		{
-			"name": "https://automationexercise.com/api/productsList",
+			"name": "Get All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -31,7 +47,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/productsList",
+			"name": "POST To All Products List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 405\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"This request method is not supported.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -54,7 +95,23 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/brandsList",
+			"name": "Get All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -77,7 +134,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/brandsList",
+			"name": "PUT To All Brands List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 405\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"This request method is not supported.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -100,7 +182,23 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/searchProduct",
+			"name": "POST To Search Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -133,7 +231,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/searchProduct",
+			"name": "POST To Search Product without search_product parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the response body as JSON\r",
+							"let response = pm.response.json();\r",
+							"\r",
+							"// Check the response code\r",
+							"pm.test(\"Response code is 400\", function () {\r",
+							"    pm.expect(response.responseCode).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"// Check the response message\r",
+							"pm.test(\"Response message is correct\", function () {\r",
+							"    pm.expect(response.message).to.eql(\"Bad request, search_product parameter is missing in POST request.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -156,7 +279,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/verifyLogin",
+			"name": "POST To Verify Login with valid details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the response body as JSON\r",
+							"let responseData = pm.response.json();\r",
+							"\r",
+							"// Check the response code\r",
+							"pm.test(\"Response code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Check the message in the response body\r",
+							"pm.test(\"Message is 'User exists!'\", function () {\r",
+							"    pm.expect(responseData.message).to.eql(\"User exists!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -194,7 +342,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/verifyLogin?password=NewTester_1234",
+			"name": "POST To Verify Login without email parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 400\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(400);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"Bad request, email or password parameter is missing in POST request.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -227,7 +400,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/verifyLogin",
+			"name": "DELETE To Verify Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 405\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(405);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"This request method is not supported.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -250,7 +448,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/verifyLogin?email=newtester22600@gmail.com&password=NewTester_12345678",
+			"name": "POST To Verify Login with invalid details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 404\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(404);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"User not found!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -288,7 +511,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/createAccount?name=mohamed&email=mohamed.a.elzebidy@gmail.com&password=Mohamed_Elzebi",
+			"name": "POST To Create/Register User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 201\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(201);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"User created!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -401,7 +649,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/deleteAccount?email=newtester22699@gmail.com&password=NewTester_1234",
+			"name": "DELETE METHOD To Delete User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 200\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"Account deleted!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -439,7 +712,32 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/updateAccount?name=mohamed&email=newtester22699@gmail.com&password=NewTester_1234&tit",
+			"name": "PUT METHOD To Update User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response body\r",
+							"let res = pm.response.json();\r",
+							"\r",
+							"// Validate the responseCode\r",
+							"pm.test(\"Response Code is 200\", function () {\r",
+							"    pm.expect(res.responseCode).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"// Validate the message\r",
+							"pm.test(\"Response Message is correct\", function () {\r",
+							"    pm.expect(res.message).to.eql(\"User updated!\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -456,12 +754,12 @@
 						},
 						{
 							"key": "email",
-							"value": "mohamed.a.elzebidy@gmail.com",
+							"value": "newtester22699@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "Mohamed_Elzebidy123456",
+							"value": "NewTester_1234",
 							"type": "text"
 						},
 						{
@@ -552,7 +850,23 @@
 			"response": []
 		},
 		{
-			"name": "https://automationexercise.com/api/getUserDetailByEmail?email=newtester22699@gmail.com",
+			"name": "GET user account detail by email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},

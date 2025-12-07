@@ -1,7 +1,9 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 public class Mp3PlayersPage
@@ -20,7 +22,14 @@ public class Mp3PlayersPage
 //    Assertions
     public void assertMp3PlayersPageTitleIsdisplayed()
     {
-        Assert.assertTrue(driver.findElement(mp3PlayersPageTitle).isDisplayed());
+        try {
+            WebElement title = driver.findElement(mp3PlayersPageTitle);
+            Assert.assertTrue(title.isDisplayed(),
+                    "Error: User failed to navigate to Mp3Players Category page after clicking Mp3Players btn");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Error: User failed to navigate to Mp3Players Category page after clicking Mp3Players btn");
+        }
+
     }
 
 
